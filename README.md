@@ -4,7 +4,6 @@ An simple example using cloudformation to build an ApiGatway with
 Lambda. This relies on the [AWS CLI](https://aws.amazon.com/cli/).
 There is a shell script to orchestrate the deploy.
 
-
 ### Stack Provisioning
 
 ##### Create
@@ -34,5 +33,5 @@ $ aws apigateway get-rest-apis --profile personal
 ```
 2) Pass the rest-api-id to the deploy script
 ```
-./deploy.sh grvuckjf24
+./deploy.sh grvuckjf24 hello-world
 ```

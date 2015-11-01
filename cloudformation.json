@@ -90,9 +90,9 @@
       "Type" : "AWS::Lambda::Alias",
       "DependsOn": ["HelloLambda"],
       "Properties" : {
-        "Name"              : "prod",
-        "FunctionName"      : { "Fn::Join" : ["-", [ { "Ref": "AWS::StackName" }, "hello" ] ] },
-        "FunctionVersion"   : "$LATEST"
+        "Name": "prod",
+        "FunctionName": { "Fn::Join" : ["-", [ { "Ref": "AWS::StackName" }, "hello" ] ] },
+        "FunctionVersion": "$LATEST"
       }
     },
 
