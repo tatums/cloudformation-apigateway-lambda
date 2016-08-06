@@ -1,5 +1,11 @@
+## Cloudformation ApiGateway and Lambda
 
-## Create the stack
+An simple example using cloudformation to build an ApiGatway with
+Lambda. This relies on the (AWS CLI)[https://aws.amazon.com/cli/].
+There is a shell script to orchestrate the deploy.
+
+
+#### Create the stack
 
 ```bash
 $ aws cloudformation create-stack --stack-name hello-world --template-body file://./cloudformation.json --capabilities CAPABILITY_IAM --profile=personal && aws cloudformation wait stack-create-complete --stack-name hello-world --profile=personal

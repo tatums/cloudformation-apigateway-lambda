@@ -1,8 +1,9 @@
 {
   "name": "hello",
   "version": "1.0.0",
-  "description": "",
+  "description": "a test lambda",
   "main": "index.js",
+  "repository": "git@github.com:tatums/cloudformation-apigateway-lambda.git",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
