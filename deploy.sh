@@ -1,7 +1,7 @@
 #!/bin/bash
 
 apiId=$1
-functionName=hello-world-hello
+functionName=$2
 profile=personal
 
 YELLOW='\033[0;33m'
@@ -14,7 +14,7 @@ function zipLambda {
   cp -r *.js package.json target/ && \
   pushd target && \
   npm install --production && \
-  zip -r hello-lambda.zip . && \
+  zip -r "${functionName}.zip" . && \
   popd
 }
 
@@ -24,7 +24,7 @@ function say {
 
 function updateLambdaCode {
   say "Uploading new lambda code." && \
-  aws lambda update-function-code --function-name $functionName --zip-file fileb://target/hello-lambda.zip --profile $profile
+  aws lambda update-function-code --function-name $functionName --zip-file "fileb://target/${functionName}.zip" --profile $profile
 }
 
 function publishVersion {
@@ -33,8 +33,8 @@ function publishVersion {
 }
 
 function updateAlias {
-  say "Updating the alias to the new version." && \
-  version=$(aws lambda list-versions-by-function --function-name hello-world-hello --profile personal | grep Version | tail -n 1 | cut -d '"' -f 4) && \
+  version=$(aws lambda list-versions-by-function --function-name $functionName --profile personal | grep Version | tail -n 1 | cut -d '"' -f 4) && \
+  say "Updating the alias to version ${version}." && \
   aws lambda update-alias --function-name $functionName --function-version $version --name prod --profile $profile
 }
 
